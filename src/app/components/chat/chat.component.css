@@ -1,0 +1,6 @@
+.list{
+    height: 500px;
+    display: block;
+    overflow: scroll;
+    margin-bottom: 10px;
+}

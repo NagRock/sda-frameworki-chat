@@ -1,0 +1,4 @@
+<div class="alert message" [ngClass]="{'alert-info': !isSelfMessage, 'alert-success': isSelfMessage}">
+  <strong>{{ message.author }}</strong> {{ message.content }} ({{ message.time |  date:'HH:mm:ss' }})
+</div>
+

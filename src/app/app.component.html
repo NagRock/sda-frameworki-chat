@@ -1,0 +1,5 @@
+<div *ngIf="!chatService.isConnected()" class="alert alert-danger" role="alert">
+  <strong>Bład servera</strong> Nie udało się połączyć z serverem. Czy napewno został uruchominy poleceniem: <strong>node server</strong> ? 
+</div>
+<app-login *ngIf="!loginService.getUserIsLoggedIn()"></app-login>
+<app-chat *ngIf="loginService.getUserIsLoggedIn()"></app-chat>

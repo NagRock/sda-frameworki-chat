@@ -1,0 +1,20 @@
+<div class="container mt-5">
+    <div class="card">
+      <div class="card-block">
+        <h3 class="card-title">Login:</h3>
+        <div class="input-group">
+          <input type="text" class="form-control" placeholder="Enter user name"
+            [(ngModel)]="userLogin"
+            required
+            minlength="3" 
+            #login="ngModel">
+          <span class="input-group-btn">
+            <button class="btn btn-secondary"
+            [disabled]="!login.valid" 
+            (click)="onEnterButtonClick()"
+            type="button">Enter</button>
+          </span>
+       </div>
+     </div>
+    </div>
+</div>
