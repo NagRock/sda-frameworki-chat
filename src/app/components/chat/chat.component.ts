@@ -9,7 +9,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ChatComponent implements OnInit {
 
-  constructor(public chatService: ChatService, public loginService: LoginService) { }
+  public messages;
+
+  constructor(public chatService: ChatService, public loginService: LoginService) { 
+    this.messages = chatService.getMessages();
+  }
 
   public onMessageEntered(message: string): void {
      this.chatService.sentMessage(message);

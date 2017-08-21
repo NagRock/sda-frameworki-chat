@@ -1,3 +1,4 @@
+import { Observable } from 'rxjs/Rx';
 import { ChatService } from './service/chat-service';
 import { LoginService } from './service/login-service';
 import { Component } from '@angular/core';
@@ -8,7 +9,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-   constructor(public loginService: LoginService, public chatService: ChatService) {
 
+  public isUserLogged;
+  public isConnectedToServer;
+
+   constructor(private loginService: LoginService, private chatService: ChatService) {
+      this.isUserLogged = loginService.getUserIsLoggedIn();
+      this.isConnectedToServer = chatService.isConnected();
    }
 }

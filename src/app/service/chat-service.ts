@@ -1,3 +1,4 @@
+import { BehaviorSubject, Observable } from 'rxjs/Rx';
 import { LoginService } from './login-service';
 import { Message } from '../model/message';
 import { Injectable } from '@angular/core';
@@ -5,20 +6,22 @@ import * as io from 'socket.io-client';
 
 @Injectable()
 export class ChatService {
-    public messages: Message[] = [];
+    private messages: BehaviorSubject<Message[]> = new BehaviorSubject([]);
     private socket;
-    private connected = false;
+    private connected: BehaviorSubject<boolean> = new BehaviorSubject(false);
 
     constructor(public loginService: LoginService) {
-        this.socket = io.connect('localhost:3000');
+        this.socket = io.connect('chat.artifex.usermd.net:3017');
         this.socket.on('connect', () => {
-           this.connected = true;
+           this.connected.next(true);
         });
         this.socket.on('receiveChatMessage', (data) => {
-            this.messages.push(data);
+            const currentMessages = this.messages.getValue();
+            currentMessages.push(data);
+            this.messages.next(currentMessages);
         });
         this.socket.on('disconnect', () => {
-            this.connected = false;
+            this.connected.next(false);
         });
     }
 
@@ -31,7 +34,11 @@ export class ChatService {
         this.socket.emit('sendChatMessage', message);
     }
 
-    private isConnected(): boolean {
-        return this.connected;
+    public isConnected(): Observable<boolean>  {
+        return this.connected.asObservable();
+    }
+
+    public getMessages(): Observable<Message[]> {
+        return this.messages.asObservable();
     }
 }
