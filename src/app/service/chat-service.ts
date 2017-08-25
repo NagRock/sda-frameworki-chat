@@ -11,7 +11,7 @@ export class ChatService {
     private connected: BehaviorSubject<boolean> = new BehaviorSubject(false);
 
     constructor(public loginService: LoginService) {
-        this.socket = io.connect('chat.artifex.usermd.net:3017');
+        this.socket = io.connect('localhost:3000');
         this.socket.on('connect', () => {
            this.connected.next(true);
         });
