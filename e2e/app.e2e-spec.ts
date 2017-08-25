@@ -47,7 +47,7 @@ describe('chat App', () => {
         const loginButton = element(by.tagName('button'));
         loginButton.click();
         const chatHeader = element(by.tagName('app-list'));
-        expect(chatHeader.isDisplayed());
+        expect(chatHeader.isDisplayed()).toBeTruthy();
       });
     });
   });
