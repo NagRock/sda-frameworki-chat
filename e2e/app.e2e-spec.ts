@@ -30,7 +30,7 @@ describe('chat App', () => {
     });
 
     describe('should be enabled', () => {
-      it(' when login input field has at least 3 characters', () => {
+      it('when login input field has at least 3 characters', () => {
         const inputField = element(by.tagName('input'));
         inputField.clear();
         inputField.sendKeys('Jan');
