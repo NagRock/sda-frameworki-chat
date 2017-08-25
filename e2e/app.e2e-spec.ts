@@ -12,11 +12,21 @@ describe('chat App', () => {
   });
 
   describe('login button', () => {
-    it('should be disabled when login input field is empty', () => {
-      const inputField = element(by.tagName('input'));
-      inputField.clear();
-      const loginButton = element(by.tagName('button'));
-      expect(loginButton.isEnabled()).toBeFalsy();
+    describe('should be disabled when login input field', () => {
+      it('is empty', () => {
+        const inputField = element(by.tagName('input'));
+        inputField.clear();
+        const loginButton = element(by.tagName('button'));
+        expect(loginButton.isEnabled()).toBeFalsy();
+      });
+
+      it('has only 2 characters', () => {
+        const inputField = element(by.tagName('input'));
+        inputField.clear();
+        inputField.sendKeys('Ja');
+        const loginButton = element(by.tagName('button'));
+        expect(loginButton.isEnabled()).toBeFalsy();
+      });
     });
   });
 });
