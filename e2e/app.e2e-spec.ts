@@ -38,5 +38,17 @@ describe('chat App', () => {
         expect(loginButton.isEnabled()).toBeTruthy();
       });
     });
+
+    describe('logging in', () => {
+      it('should switch window to chat', () => {
+        const inputField = element(by.tagName('input'));
+        inputField.clear();
+        inputField.sendKeys('Nickname');
+        const loginButton = element(by.tagName('button'));
+        loginButton.click();
+        const chatHeader = element(by.tagName('app-list'));
+        expect(chatHeader.isDisplayed());
+      });
+    });
   });
 });
