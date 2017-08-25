@@ -6,11 +6,11 @@
           <input type="text" class="form-control" placeholder="Enter user name"
             [(ngModel)]="userLogin"
             required
-            minlength="3" 
+            minlength="3"
             #login="ngModel">
           <span class="input-group-btn">
             <button class="btn btn-secondary"
-            [disabled]="!login.valid" 
+            [disabled]="!login.valid"
             (click)="onEnterButtonClick()"
             type="button">Enter</button>
           </span>
