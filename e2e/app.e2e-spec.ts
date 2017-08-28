@@ -1,4 +1,5 @@
 import {browser, by, element} from 'protractor';
+import {Key} from 'selenium-webdriver';
 
 describe('chat App', () => {
   beforeEach(() => {
@@ -48,6 +49,19 @@ describe('chat App', () => {
         loginButton.click();
         const chatHeader = element(by.tagName('app-list'));
         expect(chatHeader.isDisplayed()).toBeTruthy();
+      });
+    });
+
+    describe('sending chat message', () => {
+      it('should should be on messages list', () => {
+        const inputField = element(by.tagName('input'));
+        inputField.clear();
+        inputField.sendKeys('Nickname');
+        const loginButton = element(by.tagName('button'));
+        loginButton.click();
+        const chatMessageInputField = element(by.id('chatMessageInputField'));
+        chatMessageInputField.sendKeys('Sample message');
+        chatMessageInputField.sendKeys(Key.ENTER);
       });
     });
   });

@@ -1,4 +1,3 @@
-import { Observable } from 'rxjs/Rx';
 import { ChatService } from './service/chat-service';
 import { LoginService } from './service/login-service';
 import { Component } from '@angular/core';

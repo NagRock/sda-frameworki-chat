@@ -25,7 +25,7 @@ export class ChatService {
         });
     }
 
-    public sentMessage(text: string): void {
+    public sendMessage(text: string): void {
         const message: Message = {
             content: text,
             author: this.loginService.getUserName(),
