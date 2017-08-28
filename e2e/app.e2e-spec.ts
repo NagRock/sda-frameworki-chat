@@ -47,13 +47,13 @@ describe('chat App', () => {
         inputField.sendKeys('Nickname');
         const loginButton = element(by.tagName('button'));
         loginButton.click();
-        const chatHeader = element(by.tagName('app-list'));
-        expect(chatHeader.isDisplayed()).toBeTruthy();
+        const chatListComponent = element(by.tagName('app-list'));
+        expect(chatListComponent.isDisplayed()).toBeTruthy();
       });
     });
 
     describe('sending chat message', () => {
-      it('should should be on messages list', () => {
+      it('should add it to messages list', () => {
         const inputField = element(by.tagName('input'));
         inputField.clear();
         inputField.sendKeys('Nickname');
