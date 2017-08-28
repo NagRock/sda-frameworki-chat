@@ -1,14 +1,14 @@
 <div class="input-group">
-  <input type="text" class="form-control" 
-    placeholder="Enter message" 
+  <input id="chatMessageInputField" type="text" class="form-control"
+    placeholder="Enter message"
     [(ngModel)]="message"
-    minlength="1" 
+    minlength="1"
     required
-    #messageInput="ngModel" 
+    #messageInput="ngModel"
     (keydown.enter)="sendMessage()">
   <span class="input-group-btn">
             <button class="btn btn-secondary"
-              [disabled]="!messageInput.valid" 
+              [disabled]="!messageInput.valid"
               (click)="sendMessage()"
              type="button">Send</button>
   </span>
